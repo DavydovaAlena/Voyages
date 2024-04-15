@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Voyages"
 include(":app")
- 
+include(":remote")
