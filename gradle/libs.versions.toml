@@ -30,6 +30,7 @@ ktor = "2.3.6"
 annotation = "1.8.0-beta01"
 worldcountrydata = "1.5.4-alpha-1"
 pagingCommonKtx = "3.2.1"
+appcompatVersion = "1.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -66,12 +67,14 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 ktor-client-android = {module = "io.ktor:ktor-client-android", version.ref = "ktor"}
+ktor-client-okhttp = {module = "io.ktor:ktor-client-okhttp", version.ref = "ktor"}
 ktor-client-serialization = {module = "io.ktor:ktor-client-serialization", version.ref = "ktor"}
 ktor-client-logging = {module = "io.ktor:ktor-client-logging", version.ref = "ktor"}
 ktor-client-content-negotiation = {module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor"}
 ktor-serialization-kotlinx-json = {module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor"}
 worldCountryData = { module = "com.github.blongho:worldCountryData", version.ref = "worldcountrydata" }
 androidx-paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "pagingCommonKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
 
 
 [plugins]

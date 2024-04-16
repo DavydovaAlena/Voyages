@@ -1,7 +1,8 @@
-package ru.adavydova.remote
+package ru.adavydova.voyages_api
 
+import android.util.Log
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.android.Android
+import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -10,6 +11,7 @@ import io.ktor.client.plugins.logging.ANDROID
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.logging.SIMPLE
 import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.client.request.accept
 import io.ktor.client.request.header
@@ -21,14 +23,39 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 
-class TraverseHttpClient {
+class TraverseHttpClient(
+    private val defaultRequest: String
+) {
 
-    companion object{
+    companion object {
         private const val NETWORK_TIME_OUT = 6_000L
     }
 
-    fun getHttpClient() = HttpClient(Android){
-        install(ContentNegotiation){
+    fun getHttpClient() = HttpClient(OkHttp) {
+
+        install(Logging) {
+            logger = object : Logger {
+                override fun log(message: String) {
+                    Log.v("Logger Ktor =>", message)
+                }
+            }
+            level = LogLevel.ALL
+        }
+
+        install(ResponseObserver) {
+            onResponse { response ->
+                Log.d("HTTP status:", "${response.status.value}")
+            }
+        }
+
+
+        install(HttpTimeout) {
+            requestTimeoutMillis = NETWORK_TIME_OUT
+            connectTimeoutMillis = NETWORK_TIME_OUT
+            socketTimeoutMillis = NETWORK_TIME_OUT
+        }
+
+        install(ContentNegotiation) {
             json(
                 Json {
                     prettyPrint = true
@@ -39,34 +66,15 @@ class TraverseHttpClient {
                 }
             )
         }
-        install(HttpTimeout){
-            requestTimeoutMillis = NETWORK_TIME_OUT
-            connectTimeoutMillis = NETWORK_TIME_OUT
-            socketTimeoutMillis = NETWORK_TIME_OUT
-        }
 
-        install(Logging){
-            logger = object : Logger {
-                override fun log(message: String) {
-                    Logger.ANDROID.log(message)
-                }
-            }
-            level = LogLevel.ALL
-        }
-
-        install(ResponseObserver){
-            onResponse {response: HttpResponse ->
-                Logger.ANDROID.log("${response.status.value}")
-            }
-        }
-
-        install(DefaultRequest){
+        install(DefaultRequest) {
             header(HttpHeaders.ContentType, ContentType.Application.Json)
         }
 
         defaultRequest {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
+            url(defaultRequest)
         }
     }
 }
