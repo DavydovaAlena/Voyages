@@ -97,9 +97,10 @@ class TraverseKtorClient(
         }
     }
 
-    override suspend fun <T: ItemTraverse<T>> searchByQuery(query: String): Resource<DataSearchResponse<T>> {
+    override suspend fun searchByQuery(query: String): Resource<DataSearchResponse<ItemTraverse<*>>> {
         return try {
             val data = httpClient.get("search/?query=$query")
+
             Resource.Success(
                 DataSearchResponse(data.body())
             )
@@ -107,5 +108,6 @@ class TraverseKtorClient(
             Resource.Failure(e)
         }
     }
+
 }
 

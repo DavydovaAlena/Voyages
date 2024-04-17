@@ -61,7 +61,7 @@ class TraverseRepository(
         ).flow
     }
 
-    suspend fun <T: ItemTraverse<T> > searchByQuery (query: String): Resource<DataSearchResponse<T>>{
+    suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverse<*>>>{
         return traverseApi.searchByQuery(query)
     }
 }

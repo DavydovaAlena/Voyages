@@ -44,6 +44,6 @@ interface TraverseApi {
         order: OrderProduct = OrderProduct.popularity
     ): Resource<DataResponse<ItemTraverse.Product>>
 
-    suspend fun <T: ItemTraverse<T> > searchByQuery (query: String): Resource<DataSearchResponse<T>>
+    suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverse<*>>>
 
 }

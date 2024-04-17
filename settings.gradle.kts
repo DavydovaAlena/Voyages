@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Voyages"
 include(":app")
 include(":voyages-api")
+include(":ui-component")
