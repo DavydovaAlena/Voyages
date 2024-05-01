@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/ui-component" />
             <option value="$PROJECT_DIR$/voyages-api" />
+            <option value="$PROJECT_DIR$/voyages-data" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

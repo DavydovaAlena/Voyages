@@ -1,4 +1,4 @@
-package ru.adavydova.voyages_api.pagingsource
+package ru.adavydova.voyages_data.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

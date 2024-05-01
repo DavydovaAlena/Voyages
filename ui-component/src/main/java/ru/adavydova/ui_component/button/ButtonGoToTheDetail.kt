@@ -20,7 +20,7 @@ fun ButtonGoToTheDetail(
     modifier: Modifier = Modifier,
 ) {
     IconButton(
-        modifier = Modifier
+        modifier = modifier
             .width(75.dp)
             .height(48.dp),
         colors = IconButtonDefaults.filledIconButtonColors(

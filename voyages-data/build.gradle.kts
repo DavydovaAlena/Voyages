@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.serialization)
 }
 
 android {
-    namespace = "ru.adavydova.voyages_api"
+    namespace = "ru.adavydova.voyages_data"
     compileSdk = 34
 
     defaultConfig {
@@ -41,15 +40,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation(libs.androidx.paging.common.ktx)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.serialization)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.ktor.client.logging)
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.serialization.kotlinx.json)
-
-
+    implementation(project(":voyages-api"))
 }

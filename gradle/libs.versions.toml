@@ -38,8 +38,7 @@ appcompatVersion = "1.6.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingComposeVersion" }
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingComposeVersion" }
-flagkit-android = { module = "com.github.murgupluoglu:flagkit-android", version.ref = "flagkitAndroid" }
-jetpack_compose_country_code_picker_emoji = { module = "com.github.jump-sdk:jetpack_compose_country_code_picker_emoji", version.ref = "jetpack_compose_country_code_picker_emoji" }
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

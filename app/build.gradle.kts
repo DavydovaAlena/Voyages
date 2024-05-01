@@ -26,6 +26,7 @@ android {
         val properties = Properties()
         properties.load(project.rootProject.file("local.properties").inputStream())
         buildConfigField("String", "BASE_URL", properties.getProperty("baseUrl"))
+        buildConfigField("String", "API_PHOTO_KEY", properties.getProperty("apiPhotoKey"))
     }
 
     buildTypes {
@@ -80,10 +81,12 @@ dependencies {
     ksp(libs.hilt.compiler)
 
     implementation (libs.androidx.paging.compose)
+    implementation(libs.coil)
     implementation (libs.androidx.paging.runtime)
     implementation(libs.navigation.compose)
 
     implementation(libs.ktor.client.android)
     implementation(project(":voyages-api"))
+    implementation(project(":ui-component"))
 
 }

@@ -9,3 +9,5 @@ val buttonContentGoToTheCountry
     get() = Color(0xFFD0A062)
 val countryFlagBorderColor
     get() = Color(0xFFD0A062)
+val recommendationTextColor
+    get() = Color(0xFFE5DDD1)

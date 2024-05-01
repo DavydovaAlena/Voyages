@@ -1,14 +1,16 @@
-package ru.adavydova.voyages_api
+package ru.adavydova.voyages_data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
+import ru.adavydova.voyages_api.Resource
+import ru.adavydova.voyages_api.TraverseApi
 import ru.adavydova.voyages_api.models.Country
 import ru.adavydova.voyages_api.models.DataSearchResponse
 import ru.adavydova.voyages_api.models.ItemTraverse
-import ru.adavydova.voyages_api.pagingsource.CountriesPagingSource
-import ru.adavydova.voyages_api.pagingsource.ItemTraversePagingSource
+import ru.adavydova.voyages_data.pagingsource.CountriesPagingSource
+import ru.adavydova.voyages_data.pagingsource.ItemTraversePagingSource
 
 class TraverseRepository(
     private val traverseApi: TraverseApi
@@ -61,8 +63,7 @@ class TraverseRepository(
         ).flow
     }
 
-    suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverse<*>>>{
+    suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverse<*>>> {
         return traverseApi.searchByQuery(query)
     }
 }
-
