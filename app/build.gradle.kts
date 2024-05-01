@@ -87,6 +87,7 @@ dependencies {
 
     implementation(libs.ktor.client.android)
     implementation(project(":voyages-api"))
+    implementation(project(":voyages-data"))
     implementation(project(":ui-component"))
 
 }

@@ -9,8 +9,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
-import ru.adavydova.voyages_api.TraverseRepository
-import ru.adavydova.voyages_api.models.Country
+import ru.adavydova.voyages_data.models.Country
+import ru.adavydova.voyages_data.models.ItemTraverse
+import ru.adavydova.voyages_data.repository.TraverseRepository
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,7 +24,7 @@ class MainVM @Inject constructor(
     init {
 
         viewModelScope.launch(Dispatchers.IO) {
-            val c = repository.getCountries()
+            val c = repository.getCities()
 
             state.value = state.value.copy(countries = c)
         }
@@ -32,5 +33,5 @@ class MainVM @Inject constructor(
 
 
 data class MainData(
-    val countries: Flow<PagingData<Country>> = emptyFlow()
+    val countries: Flow<PagingData<ItemTraverse.City>> = emptyFlow()
 )

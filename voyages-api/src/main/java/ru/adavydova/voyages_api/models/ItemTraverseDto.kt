@@ -3,9 +3,9 @@ package ru.adavydova.voyages_api.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 @Serializable
-sealed class ItemTraverse<out T>{
+sealed class ItemTraverseDto<out T>{
     @Serializable
-    data class Attraction(
+    data class AttractionDto(
         @SerialName("id")
         val id: Long,
         @SerialName("name")
@@ -16,11 +16,11 @@ sealed class ItemTraverse<out T>{
         val preview:String,
         @SerialName("itemsCount")
         val itemsCount: Int
-    ): ItemTraverse<Attraction>()
+    ): ItemTraverseDto<AttractionDto>()
 
 
     @Serializable
-    data class City (
+    data class CityDto (
         @SerialName("id")
         val id: Long,
         @SerialName("name")
@@ -31,11 +31,11 @@ sealed class ItemTraverse<out T>{
         val preview: String,
         @SerialName("itemsCount")
         val itemsCount: Int
-    ): ItemTraverse<City>()
+    ): ItemTraverseDto<CityDto>()
 
 
     @Serializable
-    data class Product(
+    data class ProductDto(
 
         @SerialName("id")
         val id: Long,
@@ -64,7 +64,7 @@ sealed class ItemTraverse<out T>{
         @SerialName("category")
         val category: String,
         @SerialName("city")
-        val city: City,
+        val cityDto: CityDto,
         @SerialName("duration")
         val duration: String,
         @SerialName("durationMin")
@@ -74,11 +74,11 @@ sealed class ItemTraverse<out T>{
         @SerialName("type")
         val type: Int,
         @SerialName("tags")
-        val tags: Tag,
+        val tags: TagDto,
         @SerialName("locale")
         val locale: String,
         @SerialName("author")
-        val author: Author
-    ): ItemTraverse<Product>()
+        val authorDto: AuthorDto
+    ): ItemTraverseDto<ProductDto>()
 
 }

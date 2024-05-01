@@ -1,17 +1,11 @@
-package ru.adavydova.voyages_api.models
+package ru.adavydova.voyages_data.models
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class Country(
-    @SerialName("id")
     val id: Long,
-    @SerialName("name")
     val name: String,
-    @SerialName("slug")
     val slug: String
-) {
+){
 
     fun getCountryImage(): String {
         return when(slug){

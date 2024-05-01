@@ -10,3 +10,12 @@ data class CountryUI (
     val picture: String,
     val slug: String
 )
+
+@Immutable
+data class CityUI(
+    val id: Long,
+    val name: String,
+    val slug: String,
+    val preview: String,
+    val itemsCount: Int
+)

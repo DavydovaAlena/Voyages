@@ -7,9 +7,9 @@ import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import ru.adavydova.voyages.BuildConfig
 import ru.adavydova.voyages_api.TraverseApi
-import ru.adavydova.voyages_api.TraverseKtorClient
 import ru.adavydova.voyages_api.TraverseHttpClient
-import ru.adavydova.voyages_api.TraverseRepository
+import ru.adavydova.voyages_api.TraverseKtorClient
+import ru.adavydova.voyages_data.repository.TraverseRepository
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)

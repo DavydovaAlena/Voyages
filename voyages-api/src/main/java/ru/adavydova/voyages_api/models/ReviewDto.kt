@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Review(
+data class ReviewDto(
     @SerialName("name")
     val name: String,
     @SerialName("text")

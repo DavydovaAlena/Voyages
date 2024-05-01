@@ -4,7 +4,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.adavydova.voyages_api.Resource
 import ru.adavydova.voyages_api.TraverseApi
-import ru.adavydova.voyages_api.models.Country
+import ru.adavydova.voyages_data.mapper.toCountry
+import ru.adavydova.voyages_data.models.Country
 
 class CountriesPagingSource(
     private val api: TraverseApi
@@ -26,8 +27,11 @@ class CountriesPagingSource(
             }
 
             is Resource.Success -> {
+                val countries = data.result.response.results.map {
+                    it.toCountry()
+                }
                 LoadResult.Page(
-                    data = data.result.response.results,
+                    data = countries,
                     prevKey = if (page > 1) page.minus(1) else null,
                     nextKey = if (data.result.response.next != null) page.plus(1) else null
                 )

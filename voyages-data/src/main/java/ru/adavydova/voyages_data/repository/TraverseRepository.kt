@@ -6,9 +6,10 @@ import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.adavydova.voyages_api.Resource
 import ru.adavydova.voyages_api.TraverseApi
-import ru.adavydova.voyages_api.models.Country
 import ru.adavydova.voyages_api.models.DataSearchResponse
-import ru.adavydova.voyages_api.models.ItemTraverse
+import ru.adavydova.voyages_api.models.ItemTraverseDto
+import ru.adavydova.voyages_data.models.Country
+import ru.adavydova.voyages_data.models.ItemTraverse
 import ru.adavydova.voyages_data.pagingsource.CountriesPagingSource
 import ru.adavydova.voyages_data.pagingsource.ItemTraversePagingSource
 
@@ -27,7 +28,7 @@ class TraverseRepository(
     fun getCities(): Flow<PagingData<ItemTraverse.City>> {
         return Pager(
             pagingSourceFactory = {
-                ItemTraversePagingSource(request = {
+                ItemTraversePagingSource<ItemTraverseDto.CityDto, ItemTraverse.City>(request = {
                     traverseApi.getCities(page = it)
                 })
             },
@@ -40,7 +41,7 @@ class TraverseRepository(
     fun getProducts(): Flow<PagingData<ItemTraverse.Product>> {
         return Pager(
             pagingSourceFactory = {
-                ItemTraversePagingSource(request = {
+                ItemTraversePagingSource<ItemTraverseDto.ProductDto, ItemTraverse.Product>(request = {
                     traverseApi.getProducts(page = it)
                 })
             },
@@ -53,7 +54,7 @@ class TraverseRepository(
     fun getAttraction(): Flow<PagingData<ItemTraverse.Attraction>> {
         return Pager(
             pagingSourceFactory = {
-                ItemTraversePagingSource(request = {
+                ItemTraversePagingSource<ItemTraverseDto.AttractionDto, ItemTraverse.Attraction>(request = {
                     traverseApi.getAttractions(page = it)
                 })
             },
@@ -63,7 +64,7 @@ class TraverseRepository(
         ).flow
     }
 
-    suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverse<*>>> {
+    suspend fun searchByQuery(query: String): Resource<DataSearchResponse<ItemTraverseDto<*>>> {
         return traverseApi.searchByQuery(query)
     }
 }
