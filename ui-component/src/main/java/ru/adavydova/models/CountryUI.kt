@@ -7,5 +7,6 @@ data class CountryUI (
     val id: Long,
     val name: String,
     val code: String?,
+    val picture: String,
     val slug: String
 )
