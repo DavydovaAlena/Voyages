@@ -3,11 +3,23 @@ package ru.adavydova.utils
 import androidx.compose.ui.graphics.Color
 
 
-val buttonContainerGoToTheCountry
-    get() = Color(0xFF5B562A)
-val buttonContentGoToTheCountry
-    get() = Color(0xFFD0A062)
-val countryFlagBorderColor
-    get() = Color(0xFFD0A062)
-val recommendationTextColor
-    get() = Color(0xFFE5DDD1)
+object ColorUI{
+
+    val backgroundColor
+        get() = Color(0xFF203131)
+
+    val buttonContainerGoToTheCountry
+        get() = Color(0xFF5B562A)
+
+    val buttonContentGoToTheCountry
+        get() = Color(0xFFD0A062)
+
+    val countryFlagBorderColor
+        get() = Color(0xFFD0A062)
+
+    val recommendationTextColor
+        get() = Color(0xFFE5DDD1)
+
+    val primaryBottomMenuButtonColor
+        get() = Color(0XFFC99E5B)
+}
