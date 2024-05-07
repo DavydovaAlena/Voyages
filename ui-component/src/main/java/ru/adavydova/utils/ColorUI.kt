@@ -5,6 +5,10 @@ import androidx.compose.ui.graphics.Color
 
 object ColorUI{
 
+    val welcomeColor
+        get() = Color(0xFF59615B)
+    val hintColor
+        get() = Color(0xFF344848)
     val backgroundColor
         get() = Color(0xFF203131)
 

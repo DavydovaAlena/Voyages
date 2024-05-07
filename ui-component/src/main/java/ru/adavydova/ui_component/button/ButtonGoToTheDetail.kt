@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import ru.adavydova.ui_component.R
-import ru.adavydova.utils.buttonContainerGoToTheCountry
-import ru.adavydova.utils.buttonContentGoToTheCountry
+import ru.adavydova.utils.ColorUI.buttonContainerGoToTheCountry
+import ru.adavydova.utils.ColorUI.buttonContentGoToTheCountry
 
 @Composable
 fun ButtonGoToTheDetail(

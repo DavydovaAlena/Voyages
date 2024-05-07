@@ -11,8 +11,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.adavydova.utils.ColorUI.recommendationTextColor
 import ru.adavydova.utils.FontUI.CormorantMedium
-import ru.adavydova.utils.recommendationTextColor
 
 @Composable
 internal fun RecommendationDescriptionBlock(
