@@ -71,9 +71,6 @@ fun BottomBarTab(
 
 
     val painter = rememberVectorPainter(image = ImageVector.vectorResource(item.icon))
-    val dpSize = with(LocalDensity.current){
-        painter.intrinsicSize.toDpSize()
-    }
     val containerColor by animateColorAsState(
         targetValue =
         when (currentSelectedPosition == item.position) {
@@ -97,7 +94,6 @@ fun BottomBarTab(
         ),
         label = ""
     )
-
 
 
     FilledIconButton(
