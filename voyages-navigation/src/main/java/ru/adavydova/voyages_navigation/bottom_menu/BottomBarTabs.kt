@@ -1,7 +1,6 @@
 package ru.adavydova.voyages_navigation.bottom_menu
 
 import android.util.Log
-import androidx.compose.animation.Animatable
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -16,10 +15,16 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import ru.adavydova.utils.ColorUI
@@ -65,41 +70,57 @@ fun BottomBarTab(
 ) {
 
 
-    val containerColor by animateColorAsState(targetValue =
-        when(currentSelectedPosition == item.position){
+    val painter = rememberVectorPainter(image = ImageVector.vectorResource(item.icon))
+    val dpSize = with(LocalDensity.current){
+        painter.intrinsicSize.toDpSize()
+    }
+    val containerColor by animateColorAsState(
+        targetValue =
+        when (currentSelectedPosition == item.position) {
             true -> ColorUI.primaryBottomMenuButtonColor
             false -> ColorUI.backgroundColor
         },
         animationSpec = spring(
-            stiffness = Spring.StiffnessLow
+            stiffness = Spring.StiffnessMediumLow
         ),
         label = ""
     )
 
-    val contentColor by animateColorAsState(targetValue =
-    when(currentSelectedPosition == item.position){
-        false -> ColorUI.primaryBottomMenuButtonColor
-        true -> ColorUI.backgroundColor
-    },
+    val contentColor by animateColorAsState(
+        targetValue =
+        when (currentSelectedPosition == item.position) {
+            false -> ColorUI.primaryBottomMenuButtonColor
+            true -> ColorUI.backgroundColor
+        },
         animationSpec = spring(
-            stiffness = Spring.StiffnessLow
+            stiffness = Spring.StiffnessMediumLow
         ),
         label = ""
     )
+
+
 
     FilledIconButton(
         shape = RoundedCornerShape(24.dp),
         colors = IconButtonDefaults.filledIconButtonColors(
-            containerColor = containerColor,
-            contentColor = contentColor
+            containerColor = Color.Transparent,
+            contentColor = Color.Transparent
         ),
         modifier = modifier
+            .clip(RoundedCornerShape(24.dp))
+            .drawBehind {
+                drawRect(color = containerColor) }
             .size(60.dp),
         onClick = { onTabSelected(item) }) {
 
         Icon(
             modifier = Modifier
-                .size(22.dp),
+                .size(22.dp)
+                .drawBehind {
+                    with(painter) {
+                        draw(size, colorFilter = ColorFilter.tint(contentColor))
+                    }
+                },
             imageVector = ImageVector.vectorResource(id = item.icon),
             contentDescription = null
         )
