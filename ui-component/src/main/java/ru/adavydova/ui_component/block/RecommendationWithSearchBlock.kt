@@ -19,9 +19,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.toFontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.adavydova.ui_component.R
 import ru.adavydova.utils.ColorUI
 import ru.adavydova.utils.FontUI
 
@@ -42,6 +45,7 @@ internal fun RecommendationWithSearchBlock(
     when (searchState) {
         SearchState.ENABLE -> {
             RecommendationWithEnableSearchBlock(
+                modifier = modifier.fillMaxWidth(),
                 hint = hint,
                 updateSearchState = updateSearchState,
                 goOnRequest = goOnRequest
@@ -50,18 +54,11 @@ internal fun RecommendationWithSearchBlock(
 
         SearchState.DISABLE -> {
             RecommendationWithDisableSearchBlock(
+                modifier = modifier.fillMaxWidth(),
                 text = text,
                 updateSearchState = updateSearchState
             )
         }
-    }
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-    ) {
-
-
     }
 }
 
@@ -103,7 +100,7 @@ private fun RecommendationWithEnableSearchBlock(
         IconButton(
             colors = IconButtonDefaults.filledIconButtonColors(
                 containerColor = ColorUI.primaryBottomMenuButtonColor,
-                contentColor = Color.Transparent
+                contentColor = ColorUI.backgroundColor
             ),
             modifier = Modifier
                 .size(42.dp),
@@ -128,7 +125,7 @@ private fun RecommendationWithDisableSearchBlock(
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
@@ -136,23 +133,24 @@ private fun RecommendationWithDisableSearchBlock(
 
         Text(
             text = text,
-            fontSize = 21.sp,
+            color = ColorUI.primaryBottomMenuButtonColor,
+            fontSize = 22.sp,
             lineHeight = 24.sp,
             fontFamily = FontUI.MontserratExtraBold.toFontFamily()
         )
 
         IconButton(
             colors = IconButtonDefaults.filledIconButtonColors(
-                containerColor = ColorUI.primaryBottomMenuButtonColor,
-                contentColor = Color.Transparent
+                containerColor = Color.Transparent,
+                contentColor = ColorUI.primaryBottomMenuButtonColor
             ),
             modifier = Modifier
                 .size(42.dp),
             onClick = { updateSearchState(SearchState.ENABLE) }) {
 
             Icon(
-                modifier = Modifier.size(20.dp),
-                imageVector = Icons.Filled.Search,
+                modifier = Modifier.size(24.dp),
+                imageVector = ImageVector.vectorResource(id = R.drawable.search_icon),
                 contentDescription = null
             )
         }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -48,22 +49,24 @@ fun UserCardBlock(
             contentDescription = null)
 
         Column(
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
+                .wrapContentHeight()
+
         ) {
 
             Text(
-                fontSize = 7.sp,
-                fontFamily = FontUI.MontserratRegular.toFontFamily(),
+                modifier = Modifier.height(20.dp),
+                fontSize = 11.sp,
                 color = ColorUI.welcomeColor,
                 text = "Welcome")
 
             Text(
+                modifier = Modifier.wrapContentHeight(),
                 fontFamily = FontUI.MontserratExtraBold.toFontFamily(),
                 color = ColorUI.recommendationTextColor,
-                fontSize = 12.sp,
+                fontSize = 16.sp,
                 text = userName)
         }
     }

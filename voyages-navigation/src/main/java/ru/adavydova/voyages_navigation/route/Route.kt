@@ -11,4 +11,5 @@ sealed class Route(val route: String ) {
     data object SearchNavGraph: Route(route = "search_nav_graph")
     data object SearchScreen: Route(route = "search_screen")
     data object FilterDialog: Route(route = "filter_dialog")
+    data object  MapScreen: Route(route = "map_screen")
 }

@@ -50,7 +50,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -87,6 +87,7 @@ dependencies {
 
     implementation(libs.ktor.client.android)
     implementation(project(":voyages-api"))
+    implementation(project(":voyages-navigation"))
     implementation(project(":voyages-data"))
     implementation(project(":ui-component"))
 

@@ -1,14 +1,17 @@
 package ru.adavydova.voyages_navigation.bottom_menu
 
 import androidx.annotation.DrawableRes
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 
-@Stable
-data class BottomNavigationState(
-    val position: Int,
-    val items: List<BottomNavigationItem> = BottomNavigationItem.bottomNavigationItems
-)
 
+@JvmInline
+@Immutable
+value class BottomNavigationState(
+    val items: List<BottomNavigationItem> = BottomNavigationItem.bottomNavigationItems
+): List<BottomNavigationItem> by items
+
+@Immutable
 sealed class BottomNavigationItem(
     val position: Int,
     val route: String,
@@ -22,10 +25,10 @@ sealed class BottomNavigationItem(
         icon = ru.adavydova.ui_component.R.drawable.home_bottom_nav_icon
     )
 
-    data object User : BottomNavigationItem(
+    data object Compass : BottomNavigationItem(
         position = 1,
-        route = "user_bottom_nav_item",
-        icon = ru.adavydova.ui_component.R.drawable.user_bottom_nav_icon
+        route = "compass_bottom_nav_item",
+        icon = ru.adavydova.ui_component.R.drawable.compass_bottom_nav_icon
     )
 
     data object Bookmark : BottomNavigationItem(
@@ -34,18 +37,18 @@ sealed class BottomNavigationItem(
         icon = ru.adavydova.ui_component.R.drawable.bookmark_bottom_nav_icon
     )
 
-    data object Compass : BottomNavigationItem(
+    data object User : BottomNavigationItem(
         position = 3,
-        route = "compass_bottom_nav_item",
-        icon = ru.adavydova.ui_component.R.drawable.compass_bottom_nav_icon
+        route = "user_bottom_nav_item",
+        icon = ru.adavydova.ui_component.R.drawable.user_bottom_nav_icon
     )
 
     companion object {
         val bottomNavigationItems = listOf<BottomNavigationItem>(
-            BottomNavigationItem.Home,
-            BottomNavigationItem.Compass,
-            BottomNavigationItem.Bookmark,
-            BottomNavigationItem.User
+            Home,
+            Compass,
+            Bookmark,
+            User
         )
     }
 

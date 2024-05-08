@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 import ru.adavydova.voyages_data.models.Country
-import ru.adavydova.voyages_data.models.ItemTraverse
 import ru.adavydova.voyages_data.repository.TraverseRepository
 import javax.inject.Inject
 
@@ -24,7 +23,7 @@ class MainVM @Inject constructor(
     init {
 
         viewModelScope.launch(Dispatchers.IO) {
-            val c = repository.getCities()
+            val c = repository.getCountries()
 
             state.value = state.value.copy(countries = c)
         }
@@ -33,5 +32,5 @@ class MainVM @Inject constructor(
 
 
 data class MainData(
-    val countries: Flow<PagingData<ItemTraverse.City>> = emptyFlow()
+    val countries: Flow<PagingData<Country>> = emptyFlow()
 )
