@@ -1,10 +1,15 @@
 package ru.adavydova.voyages_navigation.navgraph
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.navigation
+import ru.adavydova.recommendation_feature.country.RecommendationCountriesScreen
 import ru.adavydova.voyages_navigation.bottom_menu.BottomNavigationItem
 import ru.adavydova.voyages_navigation.route.Route
 
@@ -43,7 +48,12 @@ fun NavGraphBuilder.recommendationNavGraph(navController: NavController) {
     ) {
 
         composable(route = Route.RecommendationCountriesScreen.route) {
-
+            RecommendationCountriesScreen(
+                modifier = Modifier
+                    .padding(start = 34.dp)
+                    .padding(vertical = 20.dp)
+                    .fillMaxSize()
+            )
         }
 
         composable(route = Route.RecommendationCitiesScreen.route) {

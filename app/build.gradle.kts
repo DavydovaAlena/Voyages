@@ -81,8 +81,8 @@ dependencies {
     ksp(libs.hilt.compiler)
 
     implementation (libs.androidx.paging.compose)
-    implementation(libs.coil)
     implementation (libs.androidx.paging.runtime)
+    implementation(libs.coil)
     implementation(libs.navigation.compose)
 
     implementation(libs.ktor.client.android)
@@ -90,5 +90,6 @@ dependencies {
     implementation(project(":voyages-navigation"))
     implementation(project(":voyages-data"))
     implementation(project(":ui-component"))
+
 
 }

@@ -21,10 +21,8 @@ class MainVM @Inject constructor(
     val state = MutableStateFlow<MainData>(MainData())
 
     init {
-
         viewModelScope.launch(Dispatchers.IO) {
             val c = repository.getCountries()
-
             state.value = state.value.copy(countries = c)
         }
     }
