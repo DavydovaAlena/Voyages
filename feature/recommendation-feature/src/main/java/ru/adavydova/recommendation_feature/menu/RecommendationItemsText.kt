@@ -1,9 +1,11 @@
 package ru.adavydova.recommendation_feature.menu
 
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.toFontFamily
@@ -14,13 +16,32 @@ import ru.adavydova.recommendation_feature.util.vertical
 import ru.adavydova.utils.ColorUI
 import ru.adavydova.utils.FontUI
 
+@Composable
+fun RecommendationItemsText(
+    modifier: Modifier,
+    recommendationItemsList: RecommendationItemsList,
+    changePosition: (Int) -> Unit
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.Start,
+        verticalArrangement = Arrangement.spacedBy(40.dp)
+    ) {
+
+        recommendationItemsList.forEachIndexed { index, recommendationItems ->
+            RecommendationItemText(
+                modifier = Modifier.clickable { changePosition(index) },
+                title = recommendationItems.title
+            )
+        }
+    }
+}
 
 @Composable
-fun RecommendationItemText(
+private fun RecommendationItemText(
     title: String,
     modifier: Modifier = Modifier
 ) {
-
     Text(
         modifier = modifier
             .vertical()
