@@ -2,6 +2,7 @@ package ru.adavydova.models
 
 import androidx.compose.runtime.Immutable
 
+
 @Immutable
 data class CountryUI (
     val id: Long,
@@ -13,6 +14,15 @@ data class CountryUI (
 
 @Immutable
 data class CityUI(
+    val id: Long,
+    val name: String,
+    val slug: String,
+    val preview: String,
+    val itemsCount: Int
+)
+
+@Immutable
+data class AttractionUI(
     val id: Long,
     val name: String,
     val slug: String,

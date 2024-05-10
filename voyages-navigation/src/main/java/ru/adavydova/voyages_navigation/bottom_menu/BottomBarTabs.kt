@@ -78,7 +78,7 @@ fun BottomBarTab(
             false -> ColorUI.backgroundColor
         },
         animationSpec = spring(
-            stiffness = Spring.StiffnessMediumLow
+            stiffness = Spring.StiffnessLow,
         ),
         label = ""
     )
@@ -90,7 +90,7 @@ fun BottomBarTab(
             true -> ColorUI.backgroundColor
         },
         animationSpec = spring(
-            stiffness = Spring.StiffnessMediumLow
+            stiffness = Spring.StiffnessLow,
         ),
         label = ""
     )

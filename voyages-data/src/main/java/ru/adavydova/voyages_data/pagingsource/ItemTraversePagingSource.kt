@@ -27,7 +27,7 @@ class ItemTraversePagingSource<T : ItemTraverseDto<T>, P: ItemTraverse<P>>(
             }
 
             is Resource.Success -> {
-                val itemTraverse = data.result.response.results.map { (it.toItemTraverse()) as P }
+                val itemTraverse: List<P> = data.result.response.results.map { (it.toItemTraverse()) as P}
                 LoadResult.Page(
                     data = itemTraverse,
                     prevKey = if (page > 1) page.minus(1) else null,

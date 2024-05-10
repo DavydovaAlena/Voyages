@@ -5,6 +5,18 @@
       <entry key="RecommendationCountryDescriptionWithButtonBlockPreview">
         <State />
       </entry>
+      <entry key="RecommendationItemPreview">
+        <State />
+      </entry>
+      <entry key="RecommendationLineIndicatorPreview">
+        <State />
+      </entry>
+      <entry key="RecommendationMenuPreview">
+        <State />
+      </entry>
+      <entry key="SelectedRecommendationItemPreview">
+        <State />
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
