@@ -7,6 +7,8 @@ object ColorUI{
 
     val welcomeColor
         get() = Color(0xFF868F88)
+    val unselectedButtonColor
+        get() = Color(0xFFA09886)
     val hintColor
         get() = Color(0xFF344848)
     val backgroundColor

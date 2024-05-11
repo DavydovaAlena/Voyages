@@ -13,8 +13,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -29,12 +29,12 @@ import ru.adavydova.utils.ColorUI
 
 @Composable
 fun RecommendationMenu(
+    selectedPosition: Int,
+    changePositionMenu: (Int)->Unit,
     modifier: Modifier = Modifier,
     recommendationItemsList: RecommendationItemsList
 ) {
-    var selectedPosition by rememberSaveable {
-        mutableIntStateOf(0)
-    }
+
     val sharedLength = remember {
         recommendationItemsList.sumOf { it.title.length }
     }
@@ -47,22 +47,24 @@ fun RecommendationMenu(
             .height(260.dp)
             .width(100.dp)
     ) {
-        var heights by remember { mutableStateOf(0.dp) }
+        var heights by rememberSaveable { mutableFloatStateOf(688.dp.value) }
 
         RecommendationItemsText(
             modifier = Modifier
                 .onGloballyPositioned {
-            heights = it.size.height.dp },
-            recommendationItemsList = recommendationItemsList
-        ){
-            selectedPosition = it
+                    heights = it.size.height.toFloat()
+                },
+            recommendationItemsList = recommendationItemsList,
+            selectedPosition = selectedPosition
+        ) {
+            changePositionMenu(it)
         }
 
 
         val itemsWeight = remember(heights) {
             hashMapOf<Int, Float>().let {
                 recommendationItemsList.forEachIndexed { index, recommendationItems ->
-                    val weight = heights.value * recommendationItems.title.length / sharedLength
+                    val weight = heights * recommendationItems.title.length / sharedLength
                     it[index] = weight
                 }
                 it
@@ -119,5 +121,8 @@ fun RecommendationMenu(
 @Composable
 private fun RecommendationMenuPreview() {
     val rec = RecommendationItemsList(RecommendationItems.items)
-    RecommendationMenu(recommendationItemsList = rec)
+    RecommendationMenu(
+        selectedPosition = 1 ,
+        recommendationItemsList = rec,
+        changePositionMenu = {})
 }

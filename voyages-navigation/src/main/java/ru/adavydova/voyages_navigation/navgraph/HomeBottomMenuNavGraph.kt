@@ -9,7 +9,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.navigation
-import ru.adavydova.recommendation_feature.country.RecommendationCountriesScreen
+import ru.adavydova.recommendation_feature.country.RecommendationScreen
 import ru.adavydova.voyages_navigation.bottom_menu.BottomNavigationItem
 import ru.adavydova.voyages_navigation.route.Route
 
@@ -43,12 +43,13 @@ fun NavGraphBuilder.searchNavGraph(navController: NavController) {
 
 fun NavGraphBuilder.recommendationNavGraph(navController: NavController) {
     navigation(
-        startDestination = Route.RecommendationCountriesScreen.route,
+        startDestination = Route.RecommendationScreen.route,
         route = Route.RecommendationNavGraph.route
     ) {
 
-        composable(route = Route.RecommendationCountriesScreen.route) {
-            RecommendationCountriesScreen(
+        composable(route = Route.RecommendationScreen.route) {
+
+            RecommendationScreen(
                 modifier = Modifier
                     .padding(start = 34.dp)
                     .padding(vertical = 20.dp)
@@ -56,13 +57,6 @@ fun NavGraphBuilder.recommendationNavGraph(navController: NavController) {
             )
         }
 
-        composable(route = Route.RecommendationCitiesScreen.route) {
-
-        }
-
-        composable(route = Route.RecommendationDestinationScreen.route) {
-
-        }
     }
 }
 

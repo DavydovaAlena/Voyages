@@ -29,7 +29,7 @@ fun RecommendationCountryCard(
     country: CountryUI,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
+
     ElevatedCard(
         shape = RoundedCornerShape(35.dp),
         modifier = Modifier

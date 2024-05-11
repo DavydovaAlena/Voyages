@@ -33,7 +33,7 @@ sealed class RecommendationItems(
 @JvmInline
 @Immutable
 value class RecommendationItemsList(
-    private val items: List<RecommendationItems>
+    private val items: List<RecommendationItems> = RecommendationItems.items
 ) : List<RecommendationItems> by items
 
 

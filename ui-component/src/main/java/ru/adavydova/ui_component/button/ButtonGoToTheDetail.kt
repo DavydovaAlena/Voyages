@@ -2,6 +2,8 @@ package ru.adavydova.ui_component.button
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -19,7 +21,8 @@ fun ButtonGoToTheDetail(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    IconButton(
+    FilledIconButton(
+        shape = RoundedCornerShape(15.dp),
         modifier = modifier
             .width(75.dp)
             .height(48.dp),

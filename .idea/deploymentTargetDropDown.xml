@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="RecommendationCountryDescriptionWithButtonBlockPreview">
-        <State />
-      </entry>
       <entry key="RecommendationItemPreview">
         <State />
       </entry>
@@ -12,6 +9,9 @@
         <State />
       </entry>
       <entry key="RecommendationMenuPreview">
+        <State />
+      </entry>
+      <entry key="RecommendationMenuPreview (1)">
         <State />
       </entry>
       <entry key="SelectedRecommendationItemPreview">

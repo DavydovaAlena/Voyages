@@ -86,7 +86,7 @@ fun BottomBarTab(
     val contentColor by animateColorAsState(
         targetValue =
         when (currentSelectedPosition == item.position) {
-            false -> ColorUI.primaryBottomMenuButtonColor
+            false -> ColorUI.unselectedButtonColor
             true -> ColorUI.backgroundColor
         },
         animationSpec = spring(
