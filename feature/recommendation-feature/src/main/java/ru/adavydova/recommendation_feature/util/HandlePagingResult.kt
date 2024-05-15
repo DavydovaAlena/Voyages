@@ -19,9 +19,6 @@ fun <T : Any> handlePaging(
         loadState.append is LoadState.Error -> {
             (loadState.append as LoadState.Error)
         }
-        loadState.prepend is LoadState.Error -> {
-            (loadState.prepend as LoadState.Error)
-        }
         else -> null
     }
 

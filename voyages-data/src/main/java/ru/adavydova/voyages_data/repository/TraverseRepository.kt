@@ -20,7 +20,7 @@ class TraverseRepository(
         return Pager(
             pagingSourceFactory = { CountriesPagingSource(traverseApi) },
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 10
             )
         ).flow
     }
@@ -33,7 +33,7 @@ class TraverseRepository(
                 })
             },
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 10
             )
         ).flow
     }
@@ -46,7 +46,7 @@ class TraverseRepository(
                 })
             },
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 10
             )
         ).flow
     }
@@ -59,7 +59,7 @@ class TraverseRepository(
                 })
             },
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 10
             )
         ).flow
     }

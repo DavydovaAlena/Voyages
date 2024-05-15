@@ -31,7 +31,7 @@ class ItemTraversePagingSource<T : ItemTraverseDto<T>, P: ItemTraverse<P>>(
                 LoadResult.Page(
                     data = itemTraverse,
                     prevKey = if (page > 1) page.minus(1) else null,
-                    nextKey = if (data.result.response.next != null) page.plus(1) else null
+                    nextKey = if (data.result.response.next != null) data.result.response.next else null
                 )
             }
         }

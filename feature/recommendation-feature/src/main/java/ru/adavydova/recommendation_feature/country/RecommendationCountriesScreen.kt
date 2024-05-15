@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import ru.adavydova.recommendation_feature.mapper.toCountryUI
+import ru.adavydova.recommendation_feature.menu.RecommendationContent
 import ru.adavydova.recommendation_feature.menu.RecommendationItemsList
 import ru.adavydova.recommendation_feature.menu.RecommendationMenu
 import ru.adavydova.recommendation_feature.util.LazyRowWithPagingData
@@ -44,10 +45,12 @@ fun RecommendationScreen(
             selectedPosition = selectedPosition,
             changePositionMenu = { selectedPosition = it })
 
-        currentDestination.content(Modifier.fillMaxSize().padding(start = 40.dp))
-
+        RecommendationContent(
+            recommendationItems = currentDestination, modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 40.dp)
+        )
     }
-
 }
 
 @Composable
