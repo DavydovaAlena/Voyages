@@ -15,22 +15,13 @@ import androidx.compose.ui.unit.dp
 import ru.adavydova.utils.shimmerLoadingAnimation
 
 @Composable
-fun LoadRecommendationLazyRow(
+fun LoadRecommendationItemCard(
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(540.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        (0..5).forEach { _ ->
-            Box(modifier = Modifier
-                .clip(RoundedCornerShape(22.dp))
-                .fillMaxHeight()
-                .width(266.dp)
-                .shimmerLoadingAnimation())
-        }
-    }
+    Box(modifier = modifier
+        .clip(RoundedCornerShape(22.dp))
+        .fillMaxHeight()
+        .width(266.dp)
+        .shimmerLoadingAnimation())
 
 }
