@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
+import ru.adavydova.recommendation_feature.city.RecommendationCityScreen
 import ru.adavydova.recommendation_feature.country.RecommendationCountriesScreen
 
 
@@ -14,7 +15,7 @@ import ru.adavydova.recommendation_feature.country.RecommendationCountriesScreen
  ){
      when(recommendationItems){
          is RecommendationItems.RecommendationCity -> {
-             RecommendationCountriesScreen(modifier = modifier)
+             RecommendationCityScreen(modifier = modifier)
          }
          is RecommendationItems.RecommendationCountry -> {
              RecommendationCountriesScreen(modifier = modifier)

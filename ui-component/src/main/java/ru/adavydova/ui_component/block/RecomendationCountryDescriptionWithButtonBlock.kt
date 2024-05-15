@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.adavydova.ui_component.button.ButtonGoToTheDetail
+import ru.adavydova.utils.ColorUI
 
 @Composable
 internal fun RecommendationCountryDescriptionWithButtonBlock(
@@ -22,7 +23,7 @@ internal fun RecommendationCountryDescriptionWithButtonBlock(
             .height(150.dp)
     ) {
 
-        RecommendationDescriptionBlock(
+        RecommendationDescriptionCountryBlock(
             modifier = Modifier.align(Alignment.TopStart),
             nameCountry = nameCountry,
             codeCountry = codeCountry
@@ -33,5 +34,29 @@ internal fun RecommendationCountryDescriptionWithButtonBlock(
             onClick = goToTheDetails
         )
 
+    }
+}
+
+@Composable
+internal fun RecommendationCityDescriptionWithButtonBlock(
+    title: String,
+    goToTheDetails: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(200.dp)
+    ) {
+
+        RecommendationDescriptionCityBlock(
+            modifier = Modifier.align(Alignment.TopStart),
+            nameCity = title)
+
+        ButtonGoToTheDetail(
+            containerColor = ColorUI.buttonContainerGoToTheCityDetails,
+            modifier = Modifier.align(Alignment.BottomEnd),
+            onClick = goToTheDetails
+        )
     }
 }

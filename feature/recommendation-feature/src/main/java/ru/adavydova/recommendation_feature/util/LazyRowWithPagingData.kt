@@ -1,7 +1,6 @@
 package ru.adavydova.recommendation_feature.util
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
@@ -25,18 +24,18 @@ fun <T : Any> LazyRowWithPagingData(
     item: @Composable (T) -> Unit
 ) {
 
-    val result = remember(key1 = items.itemSnapshotList) { handlePaging(items) }
+    val state = remember(key1 = items.itemSnapshotList) { handlePaging(items) }
 
     LazyRow(
         modifier = modifier.fillMaxSize(),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        when (result) {
+        when (state) {
             is PagingState.Error -> {
                 item {
                     ErrorRequestBlock(
                         modifier = Modifier.fillMaxSize(),
-                        error = result.message.error.localizedMessage
+                        error = state.message.error.localizedMessage
                             ?: "Request error please try again later"
                     )
                 }

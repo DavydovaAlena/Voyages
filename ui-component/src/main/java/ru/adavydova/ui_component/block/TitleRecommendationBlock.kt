@@ -26,14 +26,14 @@ internal fun TitleRecommendationBlock(
         true -> {
             TitleRecommendationWithoutFlag(
                 modifier = modifier,
-                nameCountry = nameCountry
+                title = nameCountry
             )
         }
 
         false -> {
             TitleRecommendationWithFlag(
                 modifier = modifier,
-                nameCountry = nameCountry,
+                title = nameCountry,
                 codeCountry = codeCountry
             )
         }
@@ -41,8 +41,8 @@ internal fun TitleRecommendationBlock(
 }
 
 @Composable
-private fun TitleRecommendationWithoutFlag(
-    nameCountry: String,
+internal fun TitleRecommendationWithoutFlag(
+    title: String,
     modifier: Modifier = Modifier
 ) {
     Text(
@@ -54,13 +54,13 @@ private fun TitleRecommendationWithoutFlag(
             .wrapContentHeight(),
         fontWeight = FontWeight.Bold,
         fontSize = 35.sp,
-        text = nameCountry
+        text = title
     )
 }
 
 @Composable
-private fun TitleRecommendationWithFlag(
-    nameCountry: String,
+internal fun TitleRecommendationWithFlag(
+    title: String,
     codeCountry: String,
     modifier: Modifier = Modifier
 ) {
@@ -82,7 +82,7 @@ private fun TitleRecommendationWithFlag(
             fontWeight = FontWeight.Bold,
             lineHeight = 32.sp,
             fontSize = 35.sp,
-            text = nameCountry
+            text = title
         )
 
     }

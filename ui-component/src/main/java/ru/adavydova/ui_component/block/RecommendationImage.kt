@@ -17,7 +17,7 @@ import coil.request.ImageRequest
 import kotlinx.coroutines.Dispatchers
 
 @Composable
-internal fun RecommendationCountryImages(
+internal fun RecommendationImage(
     modifier: Modifier = Modifier,
     imageUrl: String
 ) {

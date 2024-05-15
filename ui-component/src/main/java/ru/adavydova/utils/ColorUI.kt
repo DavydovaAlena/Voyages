@@ -14,8 +14,11 @@ object ColorUI{
     val backgroundColor
         get() = Color(0xFF203131)
 
-    val buttonContainerGoToTheCountry
+    val buttonContainerGoToTheCountryDetails
         get() = Color(0xFF5B562A)
+
+    val buttonContainerGoToTheCityDetails
+        get() = Color(0xFF4D4E3A)
 
     val buttonContentGoToTheCountry
         get() = Color(0xFFD0A062)
