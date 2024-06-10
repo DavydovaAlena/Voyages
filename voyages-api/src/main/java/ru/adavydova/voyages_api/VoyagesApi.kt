@@ -53,7 +53,6 @@ interface VoyagesApi {
 
     suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverseDto<*>>>
 
-
    /*
         returns additional information about the city whose name
         was passed in the request as "query".
