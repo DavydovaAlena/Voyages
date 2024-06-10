@@ -41,6 +41,7 @@ internal fun RecommendationCountryDescriptionWithButtonBlock(
 internal fun RecommendationCityDescriptionWithButtonBlock(
     title: String,
     goToTheDetails: () -> Unit,
+    numOfDestination: Int,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -51,7 +52,8 @@ internal fun RecommendationCityDescriptionWithButtonBlock(
 
         RecommendationDescriptionCityBlock(
             modifier = Modifier.align(Alignment.TopStart),
-            nameCity = title)
+            nameCity = title,
+            numOfDestination = numOfDestination)
 
         ButtonGoToTheDetail(
             containerColor = ColorUI.buttonContainerGoToTheCityDetails,

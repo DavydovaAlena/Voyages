@@ -5,5 +5,6 @@ data class VoyagesUseCase (
     val getCitiesUseCase: GetCitiesUseCase,
     val getCountriesUseCase: GetCountriesUseCase,
     val getProductsUseCase: GetProductsUseCase,
-    val searchByQueryUseCase: SearchByQueryUseCase
+    val searchByQueryUseCase: SearchByQueryUseCase,
+    val getMetadataOfTheCityByQueryUseCase: GetMetadataOfTheCityByQueryUseCase
 )

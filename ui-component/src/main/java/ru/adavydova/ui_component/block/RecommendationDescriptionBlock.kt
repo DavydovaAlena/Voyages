@@ -9,10 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.toFontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.adavydova.utils.ColorUI
 import ru.adavydova.utils.ColorUI.recommendationTextColor
+import ru.adavydova.utils.FontUI
 import ru.adavydova.utils.FontUI.CormorantMedium
+import ru.adavydova.utils.FontUI.MontserratBold
 
 @Composable
 internal fun RecommendationDescriptionCountryBlock(
@@ -28,12 +32,12 @@ internal fun RecommendationDescriptionCountryBlock(
     ) {
 
         Text(
-            color = recommendationTextColor,
+            color = ColorUI.recommendationTextColor,
             fontWeight = FontWeight.Medium,
-            fontFamily = FontFamily(CormorantMedium),
+            fontFamily = FontUI.MontserratBold.toFontFamily(),
             lineHeight = 16.sp,
             modifier = Modifier.fillMaxWidth(),
-            fontSize = 16.sp,
+            fontSize = 11.sp,
             text = "Top recommendation"
         )
 
@@ -47,6 +51,7 @@ internal fun RecommendationDescriptionCountryBlock(
 @Composable
 internal fun RecommendationDescriptionCityBlock(
     nameCity: String,
+    numOfDestination:Int,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -59,13 +64,16 @@ internal fun RecommendationDescriptionCityBlock(
         Text(
             color = recommendationTextColor,
             fontWeight = FontWeight.Medium,
-            fontFamily = FontFamily(CormorantMedium),
+            fontFamily = FontFamily(MontserratBold),
             lineHeight = 16.sp,
             modifier = Modifier.fillMaxWidth(),
-            fontSize = 16.sp,
-            text = "Top recommendation"
-        )
+            fontSize = 11.sp,
+            text = "Recommended")
 
         TitleRecommendationWithoutFlag(title = nameCity)
+
+        CurrentDestinationBlock(numOfDestination = numOfDestination)
+
+
     }
 }

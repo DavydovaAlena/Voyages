@@ -23,10 +23,9 @@ android {
             useSupportLibrary = true
         }
 
-        val properties = Properties()
-        properties.load(project.rootProject.file("local.properties").inputStream())
-        buildConfigField("String", "BASE_URL", properties.getProperty("baseUrl"))
-        buildConfigField("String", "API_PHOTO_KEY", properties.getProperty("apiPhotoKey"))
+//        val properties = Properties()
+//        properties.load(project.rootProject.file("local.properties").inputStream())
+
     }
 
     buildTypes {

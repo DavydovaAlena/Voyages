@@ -1,16 +1,16 @@
 package ru.adavydova.voyages_data.mapper
 
-import ru.adavydova.voyages_api.models.AuthorDto
-import ru.adavydova.voyages_api.models.CountryDto
-import ru.adavydova.voyages_api.models.ItemTraverseDto
-import ru.adavydova.voyages_api.models.TagDto
+import ru.adavydova.voyages_api.models.traverse_api.AuthorDto
+import ru.adavydova.voyages_api.models.traverse_api.CountryDto
+import ru.adavydova.voyages_api.models.traverse_api.ItemTraverseDto
+import ru.adavydova.voyages_api.models.traverse_api.TagDto
 import ru.adavydova.voyages_data.models.Author
 import ru.adavydova.voyages_data.models.Country
 import ru.adavydova.voyages_data.models.ItemTraverse
 import ru.adavydova.voyages_data.models.Tag
 
-fun ItemTraverseDto<*>.toItemTraverse(): ItemTraverse<*>{
-    return when(this){
+fun ItemTraverseDto<*>.toItemTraverse(): ItemTraverse<*> {
+    return when (this) {
         is ItemTraverseDto.AttractionDto -> toAttraction()
         is ItemTraverseDto.CityDto -> toCity()
         is ItemTraverseDto.ProductDto -> toProduct()
@@ -23,7 +23,7 @@ fun ItemTraverseDto.CityDto.toCity(): ItemTraverse.City {
         name = name,
         slug = slug,
         preview = preview,
-        itemsCount = itemsCount
+        itemsCount = itemsCount,
     )
 }
 
@@ -67,7 +67,8 @@ fun ItemTraverseDto.ProductDto.toProduct(): ItemTraverse.Product {
         tags = tags.toTag(),
         type = type,
         locale = locale,
-        author = authorDto.toAuthor())
+        author = authorDto.toAuthor()
+    )
 }
 
 

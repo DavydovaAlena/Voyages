@@ -18,8 +18,7 @@ data class CityUI(
     val name: String,
     val slug: String,
     val preview: String,
-    val itemsCount: Int
-)
+    val itemsCount: Int, )
 
 @Immutable
 data class AttractionUI(

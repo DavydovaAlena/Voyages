@@ -3,9 +3,10 @@ package ru.adavydova.voyages_data.pagingsource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.adavydova.voyages_api.Resource
-import ru.adavydova.voyages_api.models.DataResponse
-import ru.adavydova.voyages_api.models.ItemTraverseDto
+import ru.adavydova.voyages_api.models.traverse_api.DataResponse
+import ru.adavydova.voyages_api.models.traverse_api.ItemTraverseDto
 import ru.adavydova.voyages_data.mapper.toItemTraverse
+import ru.adavydova.voyages_data.models.CityMetadata
 import ru.adavydova.voyages_data.models.ItemTraverse
 
 class ItemTraversePagingSource<T : ItemTraverseDto<T>, P: ItemTraverse<P>>(
@@ -27,7 +28,9 @@ class ItemTraversePagingSource<T : ItemTraverseDto<T>, P: ItemTraverse<P>>(
             }
 
             is Resource.Success -> {
+                val itemTravers = data.result.response.results
                 val itemTraverse: List<P> = data.result.response.results.map { (it.toItemTraverse()) as P}
+
                 LoadResult.Page(
                     data = itemTraverse,
                     prevKey = if (page > 1) page.minus(1) else null,

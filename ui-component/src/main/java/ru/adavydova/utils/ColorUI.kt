@@ -27,6 +27,9 @@ object ColorUI{
         get() = Color(0xFFD0A062)
 
     val recommendationTextColor
+        get() = Color(0xFF8F8F8F)
+
+    val recommendationDestinationTextColor
         get() = Color(0xFFE5DDD1)
 
     val primaryBottomMenuButtonColor

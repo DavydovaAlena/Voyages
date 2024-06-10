@@ -23,9 +23,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 
-class TraverseHttpClient(
-    private val defaultRequest: String
-) {
+class TraverseHttpClient {
 
     companion object {
         private const val NETWORK_TIME_OUT = 6_000L
@@ -74,7 +72,6 @@ class TraverseHttpClient(
         defaultRequest {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
-            url(defaultRequest)
         }
     }
 }

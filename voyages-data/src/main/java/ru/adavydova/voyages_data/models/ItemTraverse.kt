@@ -16,7 +16,7 @@ sealed class ItemTraverse<out T> {
         val name: String,
         val slug: String,
         val preview: String,
-        val itemsCount: Int
+        val itemsCount: Int,
     ) : ItemTraverse<City>()
 
 
