@@ -1,6 +1,7 @@
 import java.util.Properties
 
 plugins {
+    //plug
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.ksp)
