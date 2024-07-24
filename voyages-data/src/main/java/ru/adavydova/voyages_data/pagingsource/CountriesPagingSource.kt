@@ -3,12 +3,12 @@ package ru.adavydova.voyages_data.pagingsource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.adavydova.voyages_api.Resource
-import ru.adavydova.voyages_api.TraverseApi
+import ru.adavydova.voyages_api.VoyagesApi
 import ru.adavydova.voyages_data.mapper.toCountry
 import ru.adavydova.voyages_data.models.Country
 
 class CountriesPagingSource(
-    private val api: TraverseApi
+    private val api: VoyagesApi
 ) : PagingSource<Int, Country>() {
     override fun getRefreshKey(state: PagingState<Int, Country>): Int? {
         return state.anchorPosition?.let {

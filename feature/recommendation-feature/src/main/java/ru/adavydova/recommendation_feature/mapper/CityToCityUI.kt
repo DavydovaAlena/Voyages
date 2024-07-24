@@ -9,6 +9,5 @@ fun ItemTraverse.City.toCityUI(): CityUI {
         name = name,
         slug = slug,
         preview = preview,
-        itemsCount = itemsCount
-    )
+        itemsCount = itemsCount,)
 }

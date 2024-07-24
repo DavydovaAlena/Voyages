@@ -4,11 +4,12 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.url
-import ru.adavydova.voyages_api.models.CountryDto
-import ru.adavydova.voyages_api.models.DataResponse
-import ru.adavydova.voyages_api.models.DataSearchResponse
-import ru.adavydova.voyages_api.models.ItemTraverseDto
-import ru.adavydova.voyages_api.models.ReviewDto
+import ru.adavydova.voyages_api.models.location_metadata_api.CitiesMetadataDto
+import ru.adavydova.voyages_api.models.traverse_api.CountryDto
+import ru.adavydova.voyages_api.models.traverse_api.DataResponse
+import ru.adavydova.voyages_api.models.traverse_api.DataSearchResponse
+import ru.adavydova.voyages_api.models.traverse_api.ItemTraverseDto
+import ru.adavydova.voyages_api.models.traverse_api.ReviewDto
 
 
 sealed class Resource<T> {
@@ -16,14 +17,17 @@ sealed class Resource<T> {
     class Failure<T>(val exception: Exception) : Resource<T>()
 }
 
-class TraverseKtorClient(
+class VoyagesKtorClient(
     private val httpClient: HttpClient
-) : TraverseApi {
+) : VoyagesApi {
+
+    private val weGoTripBaseUrl = "https://app.wegotrip.com/api/v2/"
+    private val theCompaniesBaseUrl = "https://api.thecompaniesapi.com/v1/"
 
     override suspend fun getCountries(page: Int): Resource<DataResponse<CountryDto>> {
         return try {
             val data =
-                httpClient.get { url("countries/?page=$page") }
+                httpClient.get { url("${weGoTripBaseUrl}countries/?page=$page") }
             Resource.Success(
                 result = data.body()
             )
@@ -41,11 +45,11 @@ class TraverseKtorClient(
         popular: Boolean
     ): Resource<DataResponse<ItemTraverseDto.CityDto>> {
         return try {
-          val data = httpClient.get("cities/?page=$page")
-          Resource.Success(
-              result = data.body()
-          )
-        } catch (e:Exception){
+            val data = httpClient.get("${weGoTripBaseUrl}cities/?page=$page")
+            Resource.Success(
+                result = data.body()
+            )
+        } catch (e: Exception) {
             Resource.Failure(e)
         }
     }
@@ -58,22 +62,22 @@ class TraverseKtorClient(
         popular: Boolean
     ): Resource<DataResponse<ItemTraverseDto.AttractionDto>> {
         return try {
-            val data = httpClient.get("attractions/?page=$page")
+            val data = httpClient.get("${weGoTripBaseUrl}attractions/?page=$page")
             Resource.Success(
                 result = data.body()
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Resource.Failure(e)
         }
     }
 
     override suspend fun getReviews(page: Int, idProduct: Int): Resource<DataResponse<ReviewDto>> {
         return try {
-            val data = httpClient.get("reviews/?page=$page")
+            val data = httpClient.get("${weGoTripBaseUrl}reviews/?page=$page")
             Resource.Success(
                 result = data.body()
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Resource.Failure(e)
         }
     }
@@ -88,26 +92,40 @@ class TraverseKtorClient(
         order: OrderProduct
     ): Resource<DataResponse<ItemTraverseDto.ProductDto>> {
         return try {
-            val data = httpClient.get("products/?page=$page")
+            val data = httpClient.get("${weGoTripBaseUrl}products/?page=$page")
             Resource.Success(
                 result = data.body()
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Resource.Failure(e)
         }
     }
 
     override suspend fun searchByQuery(query: String): Resource<DataSearchResponse<ItemTraverseDto<*>>> {
         return try {
-            val data = httpClient.get("search/?query=$query")
+            val data = httpClient.get("${weGoTripBaseUrl}search/?query=$query")
 
             Resource.Success(
                 DataSearchResponse(data.body())
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Resource.Failure(e)
         }
     }
 
+    override suspend fun getMetadataOfTheCityByQuery(
+        query: String,
+        size: Int
+    ): Resource<CitiesMetadataDto> {
+        return try {
+            val data =
+                httpClient.get("${theCompaniesBaseUrl}locations/cities?search=$query&size=$size")
+            Resource.Success(
+                CitiesMetadataDto(data.body())
+            )
+        } catch (e: Exception) {
+            Resource.Failure(e)
+        }
+    }
 }
 

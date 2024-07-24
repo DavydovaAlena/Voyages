@@ -1,19 +1,25 @@
 package ru.adavydova.voyages_api
 
-import ru.adavydova.voyages_api.models.CountryDto
-import ru.adavydova.voyages_api.models.DataResponse
-import ru.adavydova.voyages_api.models.DataSearchResponse
-import ru.adavydova.voyages_api.models.ItemTraverseDto
-import ru.adavydova.voyages_api.models.ReviewDto
+import ru.adavydova.voyages_api.models.location_metadata_api.CitiesMetadataDto
+import ru.adavydova.voyages_api.models.traverse_api.CountryDto
+import ru.adavydova.voyages_api.models.traverse_api.DataResponse
+import ru.adavydova.voyages_api.models.traverse_api.DataSearchResponse
+import ru.adavydova.voyages_api.models.traverse_api.ItemTraverseDto
+import ru.adavydova.voyages_api.models.traverse_api.ResultResponse
+import ru.adavydova.voyages_api.models.traverse_api.ReviewDto
 
 enum class OrderProduct {
     popularity, random
 }
 
-interface TraverseApi {
+interface VoyagesApi {
 
     suspend fun getCountries(page: Int): Resource<DataResponse<CountryDto>>
 
+    /*
+        Returns basic information about the cities.
+        Example query:https://app.wegotrip.com/api/v2/cities/
+    */
     suspend fun getCities(
         page: Int,
         lang: String? = null,
@@ -44,6 +50,21 @@ interface TraverseApi {
         order: OrderProduct = OrderProduct.popularity
     ): Resource<DataResponse<ItemTraverseDto.ProductDto>>
 
+
     suspend fun searchByQuery (query: String): Resource<DataSearchResponse<ItemTraverseDto<*>>>
+
+   /*
+        returns additional information about the city whose name
+        was passed in the request as "query".
+        "query" - field "name" of class CityDto
+
+        Example query: https://api.thecompaniesapi.com/v1/locations/cities?search=lisbon&size=1
+    */
+    
+    suspend fun getMetadataOfTheCityByQuery(
+        query: String,
+        size: Int = 1
+        ): Resource<CitiesMetadataDto>
+
 
 }

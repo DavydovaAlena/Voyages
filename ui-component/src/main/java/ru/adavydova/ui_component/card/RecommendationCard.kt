@@ -73,6 +73,7 @@ fun RecommendationCityCard(
                     .padding(24.dp)
                     .fillMaxWidth(),
                 title = city.name,
+                numOfDestination = city.itemsCount,
                 goToTheDetails = { /*TODO*/ })
 
         }

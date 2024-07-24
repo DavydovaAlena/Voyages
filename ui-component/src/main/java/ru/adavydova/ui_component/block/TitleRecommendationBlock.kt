@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.adavydova.ui_component.card.CardFlagOfTheCountry
+import ru.adavydova.utils.ColorUI
 import ru.adavydova.utils.ColorUI.recommendationTextColor
 import ru.adavydova.utils.FontUI.CormorantBold
 
@@ -47,7 +49,7 @@ internal fun TitleRecommendationWithoutFlag(
 ) {
     Text(
         fontFamily = FontFamily(CormorantBold),
-        color = recommendationTextColor,
+        color = ColorUI.recommendationDestinationTextColor,
         lineHeight = 36.sp,
         modifier = modifier
             .fillMaxWidth()
@@ -62,7 +64,8 @@ internal fun TitleRecommendationWithoutFlag(
 internal fun TitleRecommendationWithFlag(
     title: String,
     codeCountry: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    color: Color = ColorUI.recommendationDestinationTextColor
 ) {
 
     Row(
@@ -75,7 +78,7 @@ internal fun TitleRecommendationWithFlag(
 
         Text(
             fontFamily = FontFamily(CormorantBold),
-            color = recommendationTextColor,
+            color = color,
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight(),

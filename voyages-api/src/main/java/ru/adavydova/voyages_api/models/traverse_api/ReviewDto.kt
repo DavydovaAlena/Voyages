@@ -1,4 +1,4 @@
-package ru.adavydova.voyages_api.models
+package ru.adavydova.voyages_api.models.traverse_api
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
