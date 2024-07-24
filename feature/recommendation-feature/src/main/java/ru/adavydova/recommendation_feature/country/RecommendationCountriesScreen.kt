@@ -26,7 +26,6 @@ import ru.adavydova.ui_component.card.RecommendationCountryCard
 fun RecommendationScreen(
     modifier: Modifier = Modifier
 ) {
-
     val itemsMenu = remember {
         RecommendationItemsList()
     }
